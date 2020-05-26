@@ -1,3 +1,8 @@
+#ifndef LINALG_H
+#define LINALG_H
+
+
+
 typedef struct{
     int n;
     double** els;
@@ -10,3 +15,5 @@ void deinit_double_array(double** els, int n);
 void deinit_square_matrix (SquareMatrix A);
 double determinant(SquareMatrix mat);
 void cramer_solve(SquareMatrix A, double* B, double* result);
+
+#endif
