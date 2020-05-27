@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include "linalg.h"
 
+//first index is row, 2nd index is column
+
 SquareMatrix init_square_matrix(int n, double** els){
     SquareMatrix newMat = {
         .n =n,
