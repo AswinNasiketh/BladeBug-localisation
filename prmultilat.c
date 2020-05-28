@@ -21,6 +21,7 @@ float calculate_distancesq_from_origin(Point point){
     return powf(point.x, 2) + powf(point.y, 2) + powf(point.z, 2);
 }
 
+//B will be used to output the B matrix in Ax = B
 SquareMatrix form_matrix_system(float* tdoas, Point* receiver_coords, float* B){
     double** matrix_els = malloc(3 * sizeof(double*));
 
@@ -48,3 +49,5 @@ SquareMatrix form_matrix_system(float* tdoas, Point* receiver_coords, float* B){
     return matrix_system;
 
 }
+
+//TODO: code to select which receiver's TOAs to use and use above functions + cramer_solve to find position
