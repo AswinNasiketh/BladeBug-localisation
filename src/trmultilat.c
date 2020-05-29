@@ -1,17 +1,10 @@
 #include <stdlib.h>
 #include <math.h>
-#include "linalg.h" //needs to be updated when makefile is created
+#include "../LinAlg/linalg.h" //needs to be updated when makefile is created
 
 #define V_S 343.0 //speed of sound in air in m/s - update later
 // matrix_t is the data type for elements in the matrix structure. Can be either double or float
-typedef struct 
-{
-    matrix_t x, y ,z;
-} Point;
 
-matrix_t calculate_distancesq_from_origin(Point point){
-    return (point.x) * (point.x) + (point.y) * (point.y) + (point.z) * (point.z);
-}
 
 SquareMatrix form_matrix_system( Point* receiver, matrix_t* ri){ // ri array being distance between rxi and bug
     matrix_t** matrix_els = malloc(3 * sizeof(matrix_t*));
