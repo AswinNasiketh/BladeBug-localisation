@@ -34,7 +34,7 @@ SquareMatrix form_matrix_system(Point* receiver, matrix_t* ri){ // ri array bein
 
     SquareMatrix matrix_system = init_square_matrix(3, matrix_els);
 
-    deinit_float_array(matrix_els, 3); //free matrix_els
+    deinit_matrix_array(matrix_els, 3); //free matrix_els
     free(Ri_sq);
 
     return matrix_system;
