@@ -23,7 +23,7 @@ float calculate_distancesq_from_origin(Point point){
 
 //B will be used to output the B matrix in Ax = B
 SquareMatrix form_matrix_system(float* tdoas, Point* receiver_coords, float* B){
-    double** matrix_els = malloc(3 * sizeof(double*));
+    matrix_t** matrix_els = malloc(3 * sizeof(matrix_t*));
 
     float scaling_coeff = 2.0/V_S;
 
@@ -32,7 +32,7 @@ SquareMatrix form_matrix_system(float* tdoas, Point* receiver_coords, float* B){
     float disti_sq_scaled = 0.0;
 
     for(int i = 2; i < 5; i++){
-        matrix_els[i-2] = malloc(3 * sizeof(double));
+        matrix_els[i-2] = malloc(3 * sizeof(matrix_t));
 
         matrix_els[i-2][0] = scaling_coeff * (x1_scaled - (receiver_coords[i].x/tdoas[i])); //x_i coefficient
         matrix_els[i-2][1] = scaling_coeff * (y1_scaled - (receiver_coords[i].y/tdoas[i])); //y_i coefficient
@@ -44,7 +44,7 @@ SquareMatrix form_matrix_system(float* tdoas, Point* receiver_coords, float* B){
 
     SquareMatrix matrix_system = init_square_matrix(3, matrix_els);
 
-    deinit_double_array(matrix_els, 3);
+    deinit_matrix_array(matrix_els, 3);
 
     return matrix_system;
 
