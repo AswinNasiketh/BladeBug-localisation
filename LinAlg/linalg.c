@@ -4,14 +4,14 @@
 
 //first index is row, 2nd index is column
 
-SquareMatrix init_square_matrix(int n, double** els){
+SquareMatrix init_square_matrix(int n, matrix_t** els){
     SquareMatrix newMat = {
         .n =n,
-        .els = malloc(n * sizeof(double*))
+        .els = malloc(n * sizeof(matrix_t*))
     };
 
     for(int i = 0; i < n; i++){
-        newMat.els[i] = malloc(n * sizeof(double));
+        newMat.els[i] = malloc(n * sizeof(matrix_t));
 
         for(int j = 0; j < n; j++){
             newMat.els[i][j] = els[i][j];
@@ -24,10 +24,10 @@ SquareMatrix init_square_matrix(int n, double** els){
 SquareMatrix copy_square_matrix(SquareMatrix src){
     SquareMatrix dest;
     dest.n = src.n;
-    dest.els = malloc(dest.n * sizeof(double*));
+    dest.els = malloc(dest.n * sizeof(matrix_t*));
 
     for(int i = 0; i < dest.n; i++){
-        dest.els[i] = malloc(dest.n * sizeof(double));
+        dest.els[i] = malloc(dest.n * sizeof(matrix_t));
 
         for(int j = 0; j < dest.n; j++){
             dest.els[i][j] = src.els[i][j];
@@ -37,7 +37,7 @@ SquareMatrix copy_square_matrix(SquareMatrix src){
     return dest;
 }
 
-void deinit_double_array(double** els, int n){
+void deinit_matrix_array(matrix_t** els, int n){
     for(int i = 0; i < n; i++){
         free(els[i]);
     }
@@ -45,13 +45,13 @@ void deinit_double_array(double** els, int n){
 }
 
 void deinit_square_matrix (SquareMatrix A){
-    deinit_double_array(A.els, A.n);
+    deinit_matrix_array(A.els, A.n);
 }
 
-double determinant(SquareMatrix mat){
-    double det = 0.0;
-    double** subMatEls = malloc((mat.n-1) * sizeof(double*));
-    for(int i = 0; i < mat.n - 1; i++) subMatEls[i] = malloc((mat.n - 1) * sizeof(double));
+matrix_t determinant(SquareMatrix mat){
+    matrix_t det = 0.0;
+    matrix_t** subMatEls = malloc((mat.n-1) * sizeof(matrix_t*));
+    for(int i = 0; i < mat.n - 1; i++) subMatEls[i] = malloc((mat.n - 1) * sizeof(matrix_t));
     
     SquareMatrix subMat = {
         .n = mat.n - 1,
@@ -89,9 +89,9 @@ double determinant(SquareMatrix mat){
 
 //B is a column vector corresponding to Ax = B
 //result should be an empty column vector of size A.n, to store the results of the linsolve
-void cramer_solve(SquareMatrix A, double* B, double* result){
+void cramer_solve(SquareMatrix A, matrix_t* B, matrix_t* result){
 
-    double det_A = determinant(A);
+    matrix_t det_A = determinant(A);
 
     for(int j = 0; j < A.n; j++){
         SquareMatrix tmp = copy_square_matrix(A);
@@ -100,7 +100,7 @@ void cramer_solve(SquareMatrix A, double* B, double* result){
             tmp.els[i][j] = B[i];
         }
 
-        double det_tmp = determinant(tmp);
+        matrix_t det_tmp = determinant(tmp);
         result[j] = det_tmp/det_A;
                
         deinit_square_matrix(tmp);
