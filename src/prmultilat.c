@@ -1,13 +1,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include "linalg.h" //needs to be updated when makefile is created
-
-#define V_S 343.0 //speed of sound in air in m/s - update later
-
-typedef struct 
-{
-    float x, y ,z;
-} Point;
+#include "geometry.h"
 
 
 void calculate_tdoas(float* toas, float* tdoa_results, int num_toas){
@@ -15,10 +9,6 @@ void calculate_tdoas(float* toas, float* tdoa_results, int num_toas){
     for(int i = 1; i < num_toas; i++){
         tdoa_results[i] = toas[i] - toas[0];
     }
-}
-
-float calculate_distancesq_from_origin(Point point){
-    return powf(point.x, 2) + powf(point.y, 2) + powf(point.z, 2);
 }
 
 //B will be used to output the B matrix in Ax = B
