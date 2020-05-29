@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <math.h>
-#include "../LinAlg/linalg.h" //needs to be updated when makefile is created
+#include "linalg.h" //needs to be updated when makefile is created
 
 #define V_S 343.0 //speed of sound in air in m/s - update later
 // matrix_t is the data type for elements in the matrix structure. Can be either double or float
