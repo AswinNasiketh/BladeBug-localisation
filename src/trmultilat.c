@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <math.h>
-#include "../LinAlg/linalg.h" //needs to be updated when makefile is created
+#include "linalg.h" //needs to be updated when makefile is created
 
 #define V_S 343.0 //speed of sound in air in m/s - update later
 
