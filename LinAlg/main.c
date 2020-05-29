@@ -8,25 +8,25 @@ int main(){
 
     printf("Hello!\n");
 
-    double A[N][N] = {
+    matrix_t A[N][N] = {
         {-1.0, -5.0, -5.0},
         {4.0,-5.0, 4.0},
         {1.0,5.0, -1}
     };
 
-    double** aPointer = malloc(N * sizeof(double*));
+    matrix_t** aPointer = malloc(N * sizeof(matrix_t*));
 
 
     for(int i = 0; i < N; i++){
-        aPointer[i] = malloc(N * sizeof(double));
+        aPointer[i] = malloc(N * sizeof(matrix_t));
         for(int j = 0; j < N; j++){
             aPointer[i][j] = A[i][j];
         }
     }    
 
-    double B[N] = {2.0, 19.0, -20.0};
+    matrix_t B[N] = {2.0, 19.0, -20.0};
 
-    double result[N];
+    matrix_t result[N];
 
     SquareMatrix aMat = init_square_matrix(N, aPointer);
     cramer_solve(aMat, B, result);
