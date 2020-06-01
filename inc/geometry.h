@@ -1,6 +1,8 @@
 #ifndef GEOMETRY_H
 #define GEOMTRY_H
 
+#include <math.h>
+
 #define V_S 343.0 //speed of sound in air in m/s - update later
 
 typedef struct 
