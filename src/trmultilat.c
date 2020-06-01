@@ -7,7 +7,7 @@
 // matrix_t is the data type for elements in the matrix structure. Can be either double or float
 
 
-SquareMatrix form_matrix_system( Point* receiver, matrix_t* ri){ // ri array being distance between rxi and bug
+SquareMatrix form_matrix_system(Point* receiver, matrix_t* ri){ // ri array being distance between rxi and bug
     matrix_t** matrix_els = malloc(3 * sizeof(matrix_t*));
 
     matrix_t* Ri_sq = malloc(4 * sizeof(matrix_t)); //Ri_sq being an array of distance between rxi and origin squared
