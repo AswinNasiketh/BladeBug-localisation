@@ -5,7 +5,7 @@
 #define NUM_TAPS 31
 #define BLOCK_SIZE 32 // how many samples to process at 1 go, might change later
 
-const float_32 firCoeffs32[NUM_TAPS] = { // the coefficient generated from matlab code
+const float32_t firCoeffs32[NUM_TAPS] = { // the coefficient generated from matlab code
     0.00987575366521376, -0.0479952189591824, -0.00600838976898258, 0.0107666799171830,
     0.0223029458508225,	0.0252533422491029,	0.0145487810254858,	-0.00866009155285300,
     -0.0347976296133383, -0.0486578890548093, -0.0359695331986386, 0.00922182054442052,	
@@ -15,7 +15,7 @@ const float_32 firCoeffs32[NUM_TAPS] = { // the coefficient generated from matla
     0.0145487810254858,	0.0252533422491029,	0.0223029458508225,	0.0107666799171830,	
     -0.00600838976898258, -0.0479952189591824, 0.00987575366521376
 }
-unit32_t blockSize = BLOCK_SIZE;
+uint32_t blockSize = BLOCK_SIZE;
 uint32_t numBlocks = TEST_LENGTH_SAMPLES / BLOCK_SIZE;
 float32_t snr;
 
