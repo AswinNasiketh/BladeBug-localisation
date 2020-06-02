@@ -4,10 +4,10 @@
 
 #define TEST_LENGTH_SAMPLES 320 // defines the length of the input, might need to bump it up later
 #define NUM_TAPS 31
-#define BLOCK_SIZE 32 // might change later
+#define BLOCK_SIZE 32 // how many samples to process at 1 go, might change later
 
 
-float32_t input[TEST_LENGTH_SAMPLES]; // the input signal
+float32_t input_signal[TEST_LENGTH_SAMPLES]; // the input signal of length TEST_LENGTH_SAMPLES
 static float32_t testOutput[TEST_LENGTH_SAMPLES]; //setup the test output buffer
 static float_32t firStateF32[BLOCK_SIZE + NUM_TAPS - 1];
 
@@ -28,7 +28,6 @@ uint32_t numBlocks = TEST_LENGTH_SAMPLES / BLOCK_SIZE;
 float32_t snr;
 
 int32_t main(void){
-    uint32_t i;
     arm_fir_instance_f32 S;
     are_status status;
     float32_t *inputF32, *outputF32;
@@ -40,9 +39,10 @@ int32_t main(void){
     /* Call FIR init function to initialize the instance structure. */
     arm_fir_init_f32(&S, NUM_TAPS, (float32_t *)&firCoeffs32[0], &firStateF32[0], blockSize);
 
-    for(i=0; i < numBlocks; i++){
+    // Call the FIR process function for every blockSize sample
+    for(uint32_t i=0; i < numBlocks; i++){
     arm_fir_f32(&S, inputF32 + (i * blockSize), outputF32 + (i * blockSize), blockSize);
     }
 
-    snr = arm_snr_f32(&refOutput[0], &testOutput[0], TEST_LENGTH_SAMPLES);
+    //snr = arm_snr_f32(&refOutput[0], &testOutput[0], TEST_LENGTH_SAMPLES);
 }
