@@ -45,6 +45,5 @@ float32_t* low_pass_filtered (float32_t* input, bool print_snr){
         printf("%f\n",snr);
     }
 
-
     return outputF32;
 }
