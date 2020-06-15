@@ -1,5 +1,5 @@
 #ifndef GEOMETRY_H
-#define GEOMTRY_H
+#define GEOMETRY_H
 
 #include <math.h>
 
